@@ -15,8 +15,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 
 const variants = {
-    primary: 'bg-blue-500 text-white',
-    secondary: 'bg-gray-500 text-white',
+    primary: 'bg-indigo-600 text-white',
+    secondary: 'bg-indigo-100 text-indigo-900',
 }
 
 const sizes = {
