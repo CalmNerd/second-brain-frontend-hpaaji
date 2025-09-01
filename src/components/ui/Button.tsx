@@ -26,7 +26,7 @@ const sizes = {
 }
 
 const defaultStyles = {
-    button: 'button cursor-pointer flex items-center gap-1 rounded-md',
+    button: 'button cursor-pointer flex items-center justify-center gap-1 rounded-md',
 }
 
 export const Button = (props: ButtonProps) => {
