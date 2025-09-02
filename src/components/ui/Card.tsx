@@ -1,19 +1,18 @@
 import { cn } from "../../lib/utils";
-import { PlusIcon } from "../icons/PlusIcon";
 import { Badge } from "./Badge";
 import { DeleteIcon } from "../icons/DeleteIcon";
-import { ShareIcon } from "../icons/ShareIcon";
 
 export interface CardProps {
     className?: string;
     tags?: string[];
-    addedOn?: string;
     title?: string;
     type?: 'youtube' | 'x' | 'other';
     link?: string;
+    onDelete?: () => void;
+    createdAt?: string;
 }
 
-export const Card = ({ className, tags, addedOn, title, type, link }: CardProps) => {
+export const Card = ({ className, tags, title, type, link, onDelete, createdAt }: CardProps) => {
     return (
         <div className={cn('card',
             'rounded-lg border border-gray-200 p-4 max-w-72',
@@ -28,8 +27,10 @@ export const Card = ({ className, tags, addedOn, title, type, link }: CardProps)
                         </span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <ShareIcon />
-                        <DeleteIcon />
+                        {/* <ShareIcon /> */}
+                        <span onClick={onDelete} className="cursor-pointer opacity-50 hover:opacity-100">
+                            <DeleteIcon />
+                        </span>
                     </div>
                 </div>
                 <div className="aspect-w-16 aspect-h-9 w-full">
@@ -45,13 +46,13 @@ export const Card = ({ className, tags, addedOn, title, type, link }: CardProps)
                     )}
 
                     {type === 'x' && (
-                        <div>
+                        <div className="break-words">
                             {link}
                         </div>
                     )}
 
                     {type === 'other' && (
-                        <div className="mt-2">
+                        <div className="mt-2 break-words">
                             <a
                                 href={link}
                                 target="_blank"
@@ -68,7 +69,7 @@ export const Card = ({ className, tags, addedOn, title, type, link }: CardProps)
                         <Badge key={tag}>{tag}</Badge>
                     ))}
                 </div>
-                <div className="w-full text-xs text-gray-400">Added on {addedOn}</div>
+                <div className="w-full text-xs text-gray-400">Added on {createdAt}</div>
             </div>
         </div>
     )
